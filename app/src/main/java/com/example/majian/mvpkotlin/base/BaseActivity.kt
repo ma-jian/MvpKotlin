@@ -2,6 +2,7 @@ package com.example.majian.mvpkotlin.base
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import com.example.majian.mvpkotlin.ShowToast
 import com.example.majian.mvpkotlin.base.delegate.IActivity
 import com.example.majian.mvpkotlin.base.lifecycle.RxActivityLifecycle
 import com.example.majian.mvpkotlin.mvp.IPresenter
@@ -51,4 +52,9 @@ abstract class BaseActivity<P : IPresenter> : AppCompatActivity(), RxActivityLif
 
     override fun showLoading() {
     }
+
+    override fun showToast(msg: String) {
+        ShowToast(this,msg)
+    }
+
 }

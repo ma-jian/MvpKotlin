@@ -5,6 +5,7 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.majian.mvpkotlin.ShowToast
 import com.example.majian.mvpkotlin.base.delegate.IFragment
 import com.example.majian.mvpkotlin.base.lifecycle.RxFragmentLifecycle
 import com.example.majian.mvpkotlin.mvp.IPresenter
@@ -19,7 +20,7 @@ import javax.inject.Inject
  * Date : 2018/1/14
  * Describe :基类Fragment ，可拿到mPresenter实例
  */
-abstract class BaseFragment<P : IPresenter> : Fragment(), RxFragmentLifecycle, IFragment,IView {
+abstract class BaseFragment<P : IPresenter> : Fragment(), RxFragmentLifecycle, IFragment, IView {
     var TAG: String = this.javaClass.name
     private var subject: BehaviorSubject<FragmentEvent> = BehaviorSubject.create()
 
@@ -37,7 +38,7 @@ abstract class BaseFragment<P : IPresenter> : Fragment(), RxFragmentLifecycle, I
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(initView(),container,false)
+        return inflater.inflate(initView(), container, false)
     }
 
     override fun onDestroy() {
@@ -52,5 +53,9 @@ abstract class BaseFragment<P : IPresenter> : Fragment(), RxFragmentLifecycle, I
     }
 
     override fun hideLoading() {
+    }
+
+    override fun showToast(msg: String) {
+        ShowToast(activity!!, msg)
     }
 }

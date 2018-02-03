@@ -1,6 +1,5 @@
 package com.example.majian.demo.activity
 
-import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
 import com.example.majian.demo.Contract
@@ -10,6 +9,7 @@ import com.example.majian.demo.di.DaggerUserComponent
 import com.example.majian.demo.di.MainModule
 import com.example.majian.mvpkotlin.base.BaseActivity
 import com.example.majian.mvpkotlin.di.compoent.AppComponent
+import com.example.majian.mvpkotlin.newInstence
 import kotlinx.android.synthetic.main.activity_main.*
 
 /**
@@ -27,11 +27,11 @@ class UserActivity : BaseActivity<UserPresenter>(), Contract.mView {
     }
 
     override fun setAppComponent(appComponent: AppComponent) {
-        val userComponent = DaggerUserComponent.builder()
+        DaggerUserComponent.builder()
                 .appComponent(appComponent)
                 .mainModule(MainModule(this))
                 .build()
-        userComponent.inject(this)
+                .inject(this)
     }
 
     override fun initView(): Int = R.layout.activity_main
@@ -45,7 +45,7 @@ class UserActivity : BaseActivity<UserPresenter>(), Contract.mView {
         })
 
         button2.setOnClickListener({
-            startActivity(Intent(this, FragmentActivity::class.java))
+            newInstence(this, FragmentActivity::class.java)
         })
     }
 }

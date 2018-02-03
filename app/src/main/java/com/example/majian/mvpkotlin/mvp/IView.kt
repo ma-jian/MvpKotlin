@@ -11,4 +11,6 @@ interface IView {
     fun showLoading()
 
     fun hideLoading()
+
+    fun showToast(msg:String)
 }
