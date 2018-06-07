@@ -1,4 +1,4 @@
-package com.example.majian.demo.di
+package com.example.majian.demo.di.module
 
 import com.example.majian.demo.Contract
 import com.example.majian.mvpkotlin.di.scope.ActivityScope
@@ -11,20 +11,13 @@ import dagger.Provides
  * Describe :
  */
 @Module
-open class MainModule {
-
-    private var mView: Contract.mView
-
-    constructor(mView: Contract.mView) {
-        this.mView = mView
-    }
+class MainModule(private var mView: Contract.mView) {
 
     @ActivityScope
     @Provides
     fun privadeView(): Contract.mView {
-        return this.mView
+        return mView
     }
-
 }
 
 

@@ -13,11 +13,6 @@ import javax.inject.Inject
  * Describe :
  */
 
-class UserModuleMana @Inject
-constructor(httpManager: HttpManagerInterface) : BaseModule(httpManager) {
-
-    fun getUser(name: String): Observable<GithubUserCollection> {
-        return httpManager!!.obtainRetrofitService(GitService::class.java)
-                .getUser(name)
-    }
+class HttpManager @Inject constructor(httpManager: HttpManagerInterface) : BaseModule(httpManager) {
+    fun getUser(name: String): Observable<GithubUserCollection> = httpManager!!.obtainRetrofitService(GitService::class.java).getUser(name)
 }

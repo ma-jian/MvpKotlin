@@ -1,7 +1,7 @@
-package com.example.majian.demo.di;
+package com.example.majian.demo.di.component;
 
-import com.example.majian.demo.activity.FragmentActivity;
 import com.example.majian.demo.activity.MainActivity;
+import com.example.majian.demo.di.module.MainModule;
 import com.example.majian.mvpkotlin.di.compoent.AppComponent;
 import com.example.majian.mvpkotlin.di.scope.ActivityScope;
 
@@ -14,7 +14,6 @@ import dagger.Component;
  */
 @ActivityScope
 @Component(dependencies = AppComponent.class, modules = MainModule.class)
-public interface ComPonent {
-    void inject(FragmentActivity activity);
+public interface MainComPonent {
     void inject(MainActivity activity);
 }

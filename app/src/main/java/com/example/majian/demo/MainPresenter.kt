@@ -2,7 +2,7 @@ package com.example.majian.demo
 
 import android.arch.lifecycle.Lifecycle
 import android.arch.lifecycle.OnLifecycleEvent
-import com.example.majian.demo.di.UserModuleMana
+import com.example.majian.demo.di.HttpManager
 import com.example.majian.mvpkotlin.di.scope.ActivityScope
 import com.example.majian.mvpkotlin.http.RxThread
 import com.example.majian.mvpkotlin.mvp.BasePresenter
@@ -14,19 +14,14 @@ import javax.inject.Inject
  * Describe :
  */
 @ActivityScope
-class UserPresenter @Inject
-constructor(view: Contract.mView) : BasePresenter<UserModuleMana, Contract.mView>(view) {
-    @JvmField
-    @Inject
-    internal var userModule: UserModuleMana? = null
-
+class MainPresenter @Inject constructor(userModule: HttpManager, view: Contract.mView) : BasePresenter<HttpManager, Contract.mView>(userModule,view) {
     @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
     internal fun onCreate() {
         getUser("kotlin")
     }
 
     fun getUser(string: String) {
-        userModule!!.getUser(string)
+        mModule!!.getUser(string)
                 .compose(RxThread.applyAsync())
                 .compose(RxThread.bindToLifecycle(mView!!))
                 .subscribe(

@@ -1,6 +1,7 @@
-package com.example.majian.demo.di
+package com.example.majian.demo.di.component
 
 
+import com.example.majian.demo.di.module.UserModule
 import com.example.majian.demo.fragment.UserFragment
 import com.example.majian.mvpkotlin.di.compoent.AppComponent
 import com.example.majian.mvpkotlin.di.scope.FragmentScope
@@ -14,6 +15,6 @@ import dagger.Component
  */
 @FragmentScope
 @Component(dependencies = arrayOf(AppComponent::class), modules = arrayOf(UserModule::class))
-interface UserFragmentPonent {
+interface UserFragmentComPonent {
     fun inject(fragment: UserFragment)
 }

@@ -1,4 +1,4 @@
-package com.example.majian.demo.di
+package com.example.majian.demo.di.module
 
 import com.example.majian.demo.Contract
 import com.example.majian.mvpkotlin.di.scope.FragmentScope
@@ -11,18 +11,11 @@ import dagger.Provides
  * Describe :
  */
 @Module
-open class UserModule {
-
-    private var mView: Contract.mView
-
-    constructor(mView: Contract.mView) {
-        this.mView = mView
-    }
+class UserModule(private var mView: Contract.mView) {
 
     @FragmentScope
     @Provides
     fun privadeView(): Contract.mView {
         return this.mView
     }
-
 }

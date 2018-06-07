@@ -16,16 +16,16 @@ import javax.inject.Singleton
 class CacheInterceptor @Inject constructor(private var application: Application) : Interceptor {
 
     override fun intercept(chain: Interceptor.Chain?): Response {
-        var request = chain?.request()
-        var response = chain?.proceed(request)
+        val request = chain?.request()
+        val response = chain?.proceed(request)
         if (DeviceUtils.isNetworkConnected(application)) {
-            var maxAge = 60 * 60 * 24; // 有网络的时候从缓存1天后失效
+            val maxAge = 60 * 60 * 24; // 有网络的时候从缓存1天后失效
             response!!.newBuilder()
                     .removeHeader("Pragma")
                     .header("Cache-Control", "public, max-age=" + maxAge)
                     .build();
         } else {
-            var maxStale = 60 * 60 * 24 * 30 // // 无网络缓存30天
+            val maxStale = 60 * 60 * 24 * 30 // // 无网络缓存30天
             response!!.newBuilder()
                     .removeHeader("Pragma")
                     .header("Cache-Control", "public, only-if-cached, max-stale=" + maxStale)

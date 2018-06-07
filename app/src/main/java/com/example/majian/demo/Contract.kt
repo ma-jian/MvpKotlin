@@ -8,7 +8,6 @@ import com.example.majian.mvpkotlin.mvp.IView
  * Describe :
  */
 interface Contract {
-
     interface mView : IView {
         fun show(string: String)
     }
