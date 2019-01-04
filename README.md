@@ -1,7 +1,7 @@
 # MvpKotlin
 kotlin-mvp-dagger2-rxjava2
 
-首先感谢 JessYan 大神的<a href="https://github.com/JessYanCoding/MVPArms"> MVPArms项目 </a> 的开源。学习到很多东西。
+首先感谢 <a href="https://github.com/JessYanCoding/MVPArms"> 项目 </a> 的开源。学习到很多东西。
 本项目也是读后自己随便写的，自己也简化了好多。
 
 项目全部使用了kotlin语言完成，主要用来学习交流，目前开发中也主要是使用kotlin来做，不得不说语言真的很简洁，值得一试！
